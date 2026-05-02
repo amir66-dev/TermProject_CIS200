@@ -1,0 +1,72 @@
+
+
+SELECT COUNT(*) FROM cleaned_movies_metadata; 
+ 
+SELECT MIN(release_date), MAX(release_date) FROM cleaned_movies_metadata; 
+
+SELECT COUNT(*) FROM cleaned_movies_metadata WHERE release_date IS NULL; 
+ 
+
+SELECT year(release_date) AS year, COUNT(*) AS movie_count 
+
+FROM cleaned_movies_metadata 
+
+GROUP BY year(release_date) 
+
+ORDER BY year; 
+
+
+SELECT year(release_date) AS year, AVG(vote_average) AS avg_rating 
+
+FROM cleaned_movies_metadata 
+
+GROUP BY year(release_date) 
+
+ORDER BY year; 
+ 
+
+SELECT year(release_date) AS year, SUM(revenue) AS total_revenue 
+
+FROM cleaned_movies_metadata 
+
+GROUP BY year(release_date) 
+
+ORDER BY year; 
+
+
+SELECT language, COUNT(*) AS movie_count 
+
+FROM cleaned_movies_metadata 
+
+GROUP BY language 
+
+ORDER BY movie_count DESC; 
+
+
+SELECT language, AVG(vote_average) AS avg_rating 
+
+FROM cleaned_movies_metadata 
+
+GROUP BY language 
+
+ORDER BY avg_rating DESC; 
+
+ year(release_date) AS year, 
+
+  language, 
+
+  COUNT(*) AS movie_count, 
+
+  AVG(vote_average) AS avg_rating, 
+
+  SUM(revenue) AS total_revenue 
+
+FROM cleaned_movies_metadata 
+
+WHERE release_date IS NOT NULL 
+
+GROUP BY year(release_date), language 
+
+ORDER BY year, movie_count DESC; 
+
+

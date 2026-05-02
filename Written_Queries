@@ -1,5 +1,4 @@
 
-
 SELECT COUNT(*) FROM cleaned_movies_metadata; 
  
 SELECT MIN(release_date), MAX(release_date) FROM cleaned_movies_metadata; 

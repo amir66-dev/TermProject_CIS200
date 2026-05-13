@@ -1,0 +1,93 @@
+# Big Data Movie Analytics with Hadoop, Hive, and Tableau
+
+## Project Focus
+
+This project was completed with my classmates Karen Garcia and Zichen Xue as part of a big data analytics course.
+
+## Contributors
+
+This project was completed as a team project by:
+
+- **Amir Edalati**
+- **Karen Garcia**
+- **Zichen Xue**
+
+My main contributions included working on the data engineering workflow, Hive-based data cleaning and querying, dataset integration, analytical SQL development, and preparing data for visualization.
+
+## Project Overview
+
+This project analyzes large-scale movie data from **MovieLens** and **TMDB** to identify trends in movie production, audience ratings, revenue, genres, and language distribution over time.
+
+The goal of this project was to build a data engineering workflow that ingests raw movie datasets, stores them in **HDFS**, processes and cleans them using **Apache Hive**, creates analytical tables, and supports downstream visualization in **Tableau** and Excel.
+
+This project which was done with my two other classmates Karen and Zichen demonstrates my ability to work with distributed data systems, write SQL/Hive queries, clean and transform large datasets, and prepare data for analytics and reporting.
+
+---
+
+## Tech Stack
+
+- **Hadoop HDFS** – Distributed file storage
+- **Apache Hive** – Data cleaning, transformation, and analytical querying
+- **Beeline** – Hive query execution
+- **SQL / HiveQL** – Aggregation and analysis
+- **Excel Power Query** – Initial dataset merging and validation
+- **Tableau** – Dashboarding and visualization
+- **MovieLens 20M Dataset**
+- **TMDB Movies Dataset**
+
+---
+
+## Dataset Description
+
+The project combines movie metadata, user ratings, revenue, language, genre, and release information from two public datasets:
+
+### MovieLens 20M Dataset
+Includes:
+- User ratings
+- Movie titles
+- Movie IDs
+- Tags
+- Genome scores
+- Links to external movie identifiers
+
+### TMDB Movies Dataset
+Includes:
+- Movie metadata
+- Revenue and budget
+- Release dates
+- Genres
+- Languages
+- Credits
+- Keywords
+- TMDB movie IDs
+
+The datasets were integrated using the **TMDB Movie ID**, which served as a common identifier across sources.
+
+---
+
+## Data Engineering Workflow
+
+The data pipeline followed these major steps:
+
+1. Downloaded raw datasets from public movie data sources.
+2. Uploaded raw CSV files into **HDFS**.
+3. Created raw Hive tables using **Beeline**.
+4. Cleaned missing, inconsistent, and duplicate values.
+5. Normalized movie titles for better matching.
+6. Joined MovieLens and TMDB data using TMDB movie identifiers.
+7. Created cleaned and aggregated Hive tables.
+8. Exported processed results for visualization.
+9. Built Tableau charts for trend and distribution analysis.
+
+---
+
+## Data Cleaning Highlights
+
+Several cleaning steps were applied before analysis:
+
+### Title Normalization
+
+Movie titles were converted to lowercase and year values were removed to improve matching across datasets.
+
+```sql
+REGEXP_REPLACE(lower(title), '\\(\\d{4}\\)', '') AS clean_title
